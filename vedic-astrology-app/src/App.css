@@ -1,0 +1,463 @@
+.app {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.app-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.app-header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 20px;
+}
+
+.left-panel {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.birth-details {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.birth-details h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.chart-selector {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.chart-selector button {
+  flex: 1;
+  padding: 12px 20px;
+  border: 2px solid #667eea;
+  background: white;
+  color: #667eea;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.chart-selector button.active {
+  background: #667eea;
+  color: white;
+}
+
+.chart-selector button:hover {
+  background: #667eea;
+  color: white;
+}
+
+/* North Indian Chart Style */
+.north-indian-chart {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 120px);
+  gap: 2px;
+  background: #1a1a2e;
+  border: 3px solid #1a1a2e;
+  border-radius: 10px;
+  position: relative;
+  margin: 20px 0;
+}
+
+.house {
+  background: #16213e;
+  border: 1px solid #0f3460;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.house-number {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  font-size: 12px;
+  color: #e94560;
+  font-weight: bold;
+}
+
+.house-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.planet-marker {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.planet-marker:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+}
+
+.planet-marker.strong {
+  border: 2px solid #22c55e;
+}
+
+.planet-marker.weak {
+  border: 2px solid #ef4444;
+}
+
+/* House positioning for North Indian chart */
+.house-12 { grid-column: 1; grid-row: 1; }
+.house-1 { grid-column: 2; grid-row: 1; }
+.house-2 { grid-column: 3; grid-row: 1; }
+.house-11 { grid-column: 1; grid-row: 2; }
+.center-house { 
+  grid-column: 2; 
+  grid-row: 2; 
+  background: #0f3460;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.house-3 { grid-column: 4; grid-row: 2; }
+.house-10 { grid-column: 1; grid-row: 3; }
+.house-4 { grid-column: 4; grid-row: 3; }
+.house-9 { grid-column: 1; grid-row: 4; }
+.house-5 { grid-column: 2; grid-row: 4; }
+.house-6 { grid-column: 3; grid-row: 4; }
+.house-8 { grid-column: 2; grid-row: 3; }
+.house-7 { grid-column: 3; grid-row: 3; }
+
+.ascendant-info {
+  text-align: center;
+  color: white;
+  font-size: 14px;
+}
+
+.ascendant-info div:first-child {
+  font-weight: bold;
+  color: #e94560;
+  margin-bottom: 5px;
+}
+
+/* Tooltip */
+.planet-tooltip {
+  position: fixed;
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  max-width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 2px solid #667eea;
+}
+
+.tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.tooltip-header h3 {
+  color: #333;
+  margin: 0;
+}
+
+.strength-indicator {
+  padding: 5px 10px;
+  border-radius: 20px;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.tooltip-section {
+  margin-bottom: 15px;
+}
+
+.tooltip-section h4 {
+  color: #667eea;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.tooltip-section p {
+  color: #555;
+  font-size: 13px;
+  margin: 5px 0;
+}
+
+.aspects-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aspect-item {
+  background: #f8fafc;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  border-left: 3px solid #667eea;
+}
+
+.aspect-name {
+  display: block;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.aspect-dates {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 3px;
+}
+
+.aspect-duration {
+  display: block;
+  font-size: 11px;
+  color: #888;
+}
+
+/* Right Panel Styles */
+.legend {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.legend h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.color-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.planet-strengths {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.planet-strengths h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.strength-bar-container {
+  display: grid;
+  grid-template-columns: 80px 1fr 50px;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.strength-label {
+  font-weight: 600;
+  color: #555;
+  font-size: 13px;
+}
+
+.strength-bar {
+  height: 20px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.strength-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.strength-value {
+  font-weight: bold;
+  color: #333;
+  font-size: 13px;
+  text-align: right;
+}
+
+.transits-panel {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.transits-panel h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.transits-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.transit-item {
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.transit-date {
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.transit-description {
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.transit-sign {
+  color: #666;
+  font-size: 13px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .right-panel {
+    order: -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .north-indian-chart {
+    grid-template-rows: repeat(4, 80px);
+  }
+  
+  .planet-tooltip {
+    position: relative;
+    max-width: 100%;
+    margin-top: 20px;
+  }
+  
+  .app-header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* Scrollbar Styling */
+.transits-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.transits-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.transits-list::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 10px;
+}
+
+.transits-list::-webkit-scrollbar-thumb:hover {
+  background: #5568d3;
+}
